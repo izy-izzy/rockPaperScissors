@@ -1,0 +1,29 @@
+$directions: 'top', 'right', 'bottom', 'left';
+// $key = '','-half' ...
+// $value = 
+$spacing: (
+	'-zero'		:	0				!important,
+	''			:	$margin 		!important,
+	'-half'		:	$margin / 2		!important,
+	'-double'	:	$margin * 2		!important,
+	'-triple'	:	$margin * 3		!important
+);
+
+@each $key, $value in $spacing{
+
+	@each $direction in $directions{
+		.margin-#{$direction}#{$key}{
+			margin-#{$direction}: $value;
+		}
+		.padding-#{$direction}#{$key}{
+			padding-#{$direction}: $value;
+		}
+	}
+
+	.margin#{$key}{
+		margin: $value;
+	}
+	.padding#{$key}{
+		margin: $value;
+	}
+}

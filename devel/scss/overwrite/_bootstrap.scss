@@ -1,0 +1,64 @@
+// OVERWRITING BOOTSTRAP
+
+.btn,
+.label,
+.form-control,
+.input-group-addon{
+	border-radius: 0;
+}
+
+@mixin button-hover-focus($colour){
+	&:hover,
+	&:focus{
+		background-color: $black;
+		color: $colour;
+		outline: none;
+	}
+}
+
+.btn{
+	@include transition(all $transition-speed-fast linear);
+
+	&-primary{
+		@include button-hover-focus($lime);
+		background-color: $lime;
+		border: 1px solid darken($lime, 20%);
+		color: $black;
+	}
+
+	&-secondary{
+		@include button-hover-focus($orange);
+		background-color: $orange;
+		border: 1px solid darken($orange, 20%);
+		color: $black;
+	}
+
+	&-default{
+		@include button-hover-focus($lime);
+		background-color: $silver;
+		border: 1px solid darken($silver, 20%);
+		color: $black;
+		
+		&--delete{
+			@include button-hover-focus($orange);
+		}
+		
+	}
+
+
+}
+
+.input-group{
+	&--invalid{
+		.input-group-addon,
+		input{
+			border-color: $orange;
+		}
+	}
+	&--valid{
+		.input-group-addon,
+		input{
+			border-color: $lime;
+		}
+	}
+}

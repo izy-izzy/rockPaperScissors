@@ -1,0 +1,18 @@
+// BOOTSTRAP
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../../node_modules/font-awesome/scss/font-awesome';
+
+// GLOBAL
+@import 'global/variables';
+@import 'global/basics';
+@import 'global/spacing';
+
+// OVERWRITES
+@import 'overwrite/bootstrap';
+@import 'overwrite/ngdialog';
+
+// DEFAULTS
+@import 'defaults/animations';
+
+//COMPONENTS
+@import 'modules/game';

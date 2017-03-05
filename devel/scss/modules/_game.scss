@@ -1,0 +1,40 @@
+$games-block-name:			'games';
+$game-block-name: 			'game';
+
+.#{$games-block-name}{
+	.#{$game-block-name}{
+		&-row{
+			background: darken($silver, 5%);
+			margin: 2px 0;
+			padding: $margin/2;
+			&--win{
+				background: $lime;
+			}
+			&--lost{
+				background: $orange;
+			}
+		}
+	}
+	
+}
+
+// Text blocks animation in detail. (ng-animate)
+.#{$game-block-name} {
+	@include transition(all $transition-speed-fast ease-in-out);
+
+	&.ng-animate {
+		@include transition(all $transition-speed-default ease-in-out);
+	}
+	&.ng-enter {
+		opacity: 0;
+		&.ng-enter-active {
+			opacity: 1;
+		}
+	}
+	&.ng-leave {
+		opacity: 1;
+		&.ng-leave-active {
+			opacity: 0;
+		}
+	}
+}

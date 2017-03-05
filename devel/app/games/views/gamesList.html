@@ -1,0 +1,99 @@
+<div class="container games">
+	<header>
+		<div class="row">
+			<div class="col-xs-8">
+				<h1>Games List</h1>
+			</div>
+			<div class="col-xs-4">
+				<button class="btn btn-secondary margin-top pull-right" 
+					ng-click="$ctrl.deleteAllGames()"
+					data-e2e="remove-all-games">
+					<i class="fa fa-times-circle" aria-hidden="true"></i>
+					Delete all games
+				</button>
+			</div>
+		</div>
+	</header>
+
+	<section ng-if="$ctrl.errorMessage">
+		<div class="alert alert-danger">		
+			<strong>ERROR!</strong>
+			{{$ctrl.errorMessage}}
+		</div>
+	</section>
+	
+	<section>
+		<div class="row game-row">
+			<div>
+				<div class="col-xs-3">
+					<strong>TIME</strong>
+				</div>
+				<div class="col-xs-5">
+					<strong>Players option</strong>
+				</div>
+				<div class="col-xs-2">
+					<strong>Opponent option</strong>
+				</div>
+				<div class="col-xs-2">
+					<strong>Result</strong>
+				</div>
+			</div>
+		</div>
+		<div ng-repeat="game in $ctrl.gamesList" class="game">
+			<div class="row game-row" 
+				 ng-class="{'game-row--win' : $ctrl.isGameWonByPlayer(game), 
+				 			'game-row--lost' : $ctrl.isGameLostByPlayer(game)}">
+				<div class="col-xs-3">
+					{{game.timestamp | date : 'short'}}
+				</div>
+				<div class="col-xs-5">
+					<div ng-if="$ctrl.hasPlayerPlayedInGame(game)">
+						<player-option-as-icon option="game.playerOption"></player-option-as-icon>
+						{{game.playerOption}}
+					</div>
+					<div ng-if="!$ctrl.hasPlayerPlayedInGame(game)">
+						<button class="btn btn-primary btn-small"
+							ng-click="$ctrl.playGameWith(game,'rock')">
+							<player-option-as-icon option="'rock'"></player-option-as-icon>
+							Rock 
+						</button>
+						<button class="btn btn-primary btn-small"
+							ng-click="$ctrl.playGameWith(game,'paper')">
+							<player-option-as-icon option="'paper'"></player-option-as-icon>
+							Paper
+						</button>
+						<button class="btn btn-primary btn-small"
+							ng-click="$ctrl.playGameWith(game,'scissors')">
+							<player-option-as-icon option="'scissors'"></player-option-as-icon>
+							Scissors
+						</button>
+					</div>
+					
+				</div>
+				<div class="col-xs-2">
+					<player-option-as-icon option="game.computerOption"></player-option-as-icon>
+					{{game.computerOption}}
+				</div>
+				<div class="col-xs-2">
+					{{$ctrl.gameResultFromPlayerPerspective(game)}}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="row">
+			<div class="col-xs-12">
+				<hr/>
+				<button class="btn btn-primary margin-top" 
+						ng-click="$ctrl.addNewGame()"
+						data-e2e="add-new-game">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						Add game
+				</button>
+			</div>
+		</div>
+	</footer>
+		
+
+</div>

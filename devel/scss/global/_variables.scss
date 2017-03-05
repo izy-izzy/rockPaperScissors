@@ -1,0 +1,19 @@
+$white:							#ffffff;
+$orange:						#ff5d0d;
+$lime:							#8de805;
+$silver:						#f5f5f5;
+$black:							#0a0a0a;
+$grey:							#808080;
+
+$background-color: 				$silver;
+$font-color:					$black;
+$hr-line-color:					$grey;
+
+$hr-height:						1px;
+
+$margin: 						20px;
+
+$transition-speed-default:		0.25s;
+$transition-speed-fast:			$transition-speed-default/2;
+$transition-speed-long:			$transition-speed-default*2;
+$transition-speed-instant:		$transition-speed-default/4;

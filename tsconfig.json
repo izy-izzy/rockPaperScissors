@@ -1,0 +1,21 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "amd",
+		"declaration": false,
+		"noImplicitAny": false,
+		"removeComments": true,
+		"noLib": false
+	},
+	"files": [
+		"main.d.ts",
+		"app/**/*.ts"
+	],
+	"filesGlob": [
+		"app/**/*.ts"
+	],
+	"exclude": [
+		"typings",
+		"node_modules"
+	]
+}

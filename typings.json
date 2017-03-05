@@ -1,0 +1,21 @@
+{
+	"name": "rock-paper-scissors",
+	"globalDependencies": {
+		"angular": "registry:dt/angular#1.5.0+20160627105203",
+		"angular-mocks": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-mocks.d.ts#237339b0238845b027431280c72dc663ca534132",
+		"angular-resource": "registry:dt/angular-resource#1.5.0+20160613142217",
+		"angular-ui-router": "registry:dt/angular-ui-router#1.1.5+20160521151413",
+		"angularfire": "registry:dt/angularfire#0.8.2+20160707221224",
+		"bluebird": "github:DefinitelyTyped/DefinitelyTyped/bluebird/bluebird.d.ts#237339b0238845b027431280c72dc663ca534132",
+		"express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#237339b0238845b027431280c72dc663ca534132",
+		"express-serve-static-core": "github:DefinitelyTyped/DefinitelyTyped/express-serve-static-core/express-serve-static-core.d.ts#237339b0238845b027431280c72dc663ca534132",
+		"firebase": "https://gist.githubusercontent.com/cdcarson/28399c50b02bf6c507fbf5b7b30daa31/raw/fa089d231ca4253d4715f8161efc6af74c972dfa/firebase-sdk-3-typings.d.ts",
+		"jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
+		"jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#08ed4e9f1869e37e29514d862e0158b40e550232",
+		"karma": "registry:dt/karma#0.13.9+20160501125529",
+		"log4js": "github:DefinitelyTyped/DefinitelyTyped/log4js/log4js.d.ts#237339b0238845b027431280c72dc663ca534132",
+		"mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#237339b0238845b027431280c72dc663ca534132",
+		"node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#237339b0238845b027431280c72dc663ca534132",
+		"serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#237339b0238845b027431280c72dc663ca534132"
+	}
+}
