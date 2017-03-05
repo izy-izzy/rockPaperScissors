@@ -25,7 +25,7 @@
     "e2e": "concurrently \"webdriver-manager start\" \"protractor\""
   },
   "keywords": [
-    "peopleApp test "
+    "rpsApplicaiton test e2e rock paper scissors"
   ],
   "author": "Lukas Kalcok",
   "license": "ISC",

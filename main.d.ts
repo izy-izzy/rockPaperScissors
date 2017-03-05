@@ -6,7 +6,7 @@
 ///<reference path="devel/app/shared/services/api.service.ts" />
 
 /*
-	People
+	Game
 */
 ///<reference path="devel/app/games/interfaces/instances.d.ts" />
 ///<reference path="devel/app/games/services/games.service.ts" />
