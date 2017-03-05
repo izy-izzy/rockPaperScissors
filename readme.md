@@ -55,8 +55,8 @@ npm run karma
 ```
 
 ## Known Issues
-AngularFire typescript definition file is not correct. There is an error during compilation of the AngularFire.
-There is an error in unit test that points to the firebase beeing initialised multiple times.
+* AngularFire typescript definition file is not correct. There is an error during compilation of the AngularFire.
+* There is an error in unit test that points to the firebase beeing initialised multiple times.
 
 ## Contributors
 lukaskalcok@gmail.com (Lukas Kalcok)
