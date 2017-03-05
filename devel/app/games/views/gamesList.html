@@ -1,11 +1,11 @@
 <div class="container games">
 	<header>
 		<div class="row">
-			<div class="col-xs-8">
+			<div class="col-md-8 col-xs-12">
 				<h1>Games List</h1>
 			</div>
-			<div class="col-xs-4">
-				<button class="btn btn-secondary margin-top pull-right" 
+			<div class="col-md-4 col-xs-12">
+				<button class="btn btn-secondary margin-top pull-right margin-bottom" 
 					ng-click="$ctrl.deleteAllGames()"
 					data-e2e="remove-all-games">
 					<i class="fa fa-times-circle" aria-hidden="true"></i>
@@ -23,18 +23,18 @@
 	</section>
 	
 	<section>
-		<div class="row game-row">
+		<div class="row game-row hidden-xs hidden-sm">
 			<div>
-				<div class="col-xs-3">
-					<strong>TIME</strong>
+				<div class="col-md-3 col-xs-12">
+					<strong>Time</strong>
 				</div>
-				<div class="col-xs-5">
+				<div class="col-md-5 col-xs-12">
 					<strong>Players option</strong>
 				</div>
-				<div class="col-xs-2">
+				<div class="col-md-2 col-xs-12">
 					<strong>Opponent option</strong>
 				</div>
-				<div class="col-xs-2">
+				<div class="col-md-2 col-xs-12">
 					<strong>Result</strong>
 				</div>
 			</div>
@@ -43,11 +43,13 @@
 			<div class="row game-row" 
 				 ng-class="{'game-row--win' : $ctrl.isGameWonByPlayer(game), 
 				 			'game-row--lost' : $ctrl.isGameLostByPlayer(game)}">
-				<div class="col-xs-3">
+				<div class="col-md-3 col-xs-12">
+					<strong class="hidden-lg hidden-md">time: </strong>
 					{{game.timestamp | date : 'short'}}
 				</div>
-				<div class="col-xs-5">
+				<div class="col-md-5 col-xs-12">
 					<div ng-if="$ctrl.hasPlayerPlayedInGame(game)">
+						<strong class="hidden-lg hidden-md">Players option: </strong>
 						<player-option-as-icon option="game.playerOption"></player-option-as-icon>
 						{{game.playerOption}}
 					</div>
@@ -70,11 +72,13 @@
 					</div>
 					
 				</div>
-				<div class="col-xs-2">
+				<div class="col-md-2 col-xs-12">
+					<strong class="hidden-lg hidden-md">Opponent option: </strong>
 					<player-option-as-icon option="game.computerOption"></player-option-as-icon>
 					{{game.computerOption}}
 				</div>
-				<div class="col-xs-2">
+				<div class="col-md-2 col-xs-12">
+					<strong class="hidden-lg hidden-md">Result: </strong>
 					{{$ctrl.gameResultFromPlayerPerspective(game)}}
 				</div>
 			</div>
