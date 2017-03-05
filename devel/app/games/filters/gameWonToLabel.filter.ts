@@ -25,10 +25,10 @@
 						case -1:
 							return 'lose';
 					default:
-							return 'unknow';
+							return 'unknown';
 				}
 			} else {
-				return 'unknow';
+				return 'unknown';
 			}
 		}
 

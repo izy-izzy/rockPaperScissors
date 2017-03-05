@@ -1,4 +1,5 @@
 <div class="container games">
+
 	<header>
 		<div class="row">
 			<div class="col-md-8 col-xs-12">
@@ -16,7 +17,7 @@
 	</header>
 
 	<section ng-if="$ctrl.errorMessage">
-		<div class="alert alert-danger">		
+		<div class="alert alert-danger">
 			<strong>ERROR!</strong>
 			{{$ctrl.errorMessage}}
 		</div>
@@ -47,9 +48,9 @@
 					<strong class="hidden-lg hidden-md">time: </strong>
 					{{game.timestamp | date : 'short'}}
 				</div>
-				<div class="col-md-5 col-xs-12">
-					<div ng-if="$ctrl.hasPlayerPlayedInGame(game)">
-						<strong class="hidden-lg hidden-md">Players option: </strong>
+					<div class="col-md-5 col-xs-12">
+						<div ng-if="$ctrl.hasPlayerPlayedInGame(game)">
+						<strong class="hidden-lg hidden-md">Player's option: </strong>
 						<player-option-as-icon option="game.playerOption"></player-option-as-icon>
 						{{game.playerOption}}
 					</div>
@@ -73,7 +74,7 @@
 					
 				</div>
 				<div class="col-md-2 col-xs-12">
-					<strong class="hidden-lg hidden-md">Opponent option: </strong>
+					<strong class="hidden-lg hidden-md">Opponent's' option: </strong>
 					<player-option-as-icon option="game.computerOption"></player-option-as-icon>
 					{{game.computerOption}}
 				</div>
@@ -89,15 +90,14 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<hr/>
-				<button class="btn btn-primary margin-top" 
+				<button class="btn btn-primary margin-top margin-bottom" 
 						ng-click="$ctrl.addNewGame()"
 						data-e2e="add-new-game">
 						<i class="fa fa-plus" aria-hidden="true"></i>
-						Add game
+						Add new game
 				</button>
 			</div>
 		</div>
 	</footer>
-		
 
 </div>

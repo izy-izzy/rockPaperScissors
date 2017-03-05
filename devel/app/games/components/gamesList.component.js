@@ -39,7 +39,7 @@ var games;
          */
         gameListsController.prototype.addNewGame = function () {
             var _this = this;
-            this.GameService.addCleanGame()
+            this.GameService.addNewGame()
                 .then(function (res) { return null; }, function (error) {
                 _this.errorMessage = error;
             });

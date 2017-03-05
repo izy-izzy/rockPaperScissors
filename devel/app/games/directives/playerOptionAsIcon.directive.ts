@@ -11,7 +11,7 @@
 	 * @class playerOptionAsIconDirective
 	 * @implements {ng.IDirective}
 	 */
-	class playerOptionAsIconDirective implements ng.IDirective {		
+	class playerOptionAsIconDirective implements ng.IDirective {
 
 		static $inject = [];
 		
@@ -26,7 +26,7 @@
 		template:string = `
 			<i ng-if="option === 'rock'" class="fa fa-hand-rock-o" aria-hidden="true"></i>
 			<i ng-if="option === 'scissors'" class="fa fa-hand-scissors-o" aria-hidden="true"></i>
-			<i ng-if="option === 'paper'" class="fa fa-hand-paper-o" aria-hidden="true"></i>`;			
+			<i ng-if="option === 'paper'" class="fa fa-hand-paper-o" aria-hidden="true"></i>`;
 	}
 
 	angular

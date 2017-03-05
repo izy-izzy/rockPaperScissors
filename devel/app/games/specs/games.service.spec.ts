@@ -1,16 +1,12 @@
 ///<reference path="../../../../main.d.ts" />
 
-// RXJS does not have a good typescript file, thus this is required.
-interface TestableScheduler extends Rx.VirtualTimeScheduler<any,any>{
-	scheduleAbsolute: Function;
-}
-
 describe('Games', () => {
 
 	let $scope;
 
 	beforeEach(angular.mock.module('rpsApp'));
-	beforeEach(inject(($rootScope) => {
+
+	beforeEach(inject($rootScope => {
 		$scope = $rootScope.$new();
 
 		var firebaseConfig = {
@@ -24,17 +20,16 @@ describe('Games', () => {
 		firebase.initializeApp(firebaseConfig);
 	}));
 
-	afterEach(function() {
+	afterEach(() => {
 		$scope.$apply();
 	});
 
 	describe('Service', () => {
 
 		let GameService: IGameService;
-		beforeEach(inject(($injector) => {
+		beforeEach(inject($injector => {
 			GameService = $injector.get('GameService');
 		}));
-
 		
 		var winGame:IGame = {
 			computerOption: 'rock',

@@ -18,9 +18,9 @@ var games;
             /*
                         | 	rock 	| paper 	| scissors
             -----------------------------------------------
-                rock	|	0		| -1		| 1
-                paper   |	1		| 0			| -1
-                scissors|	-1		| 1			| 0
+                rock	|	 0		| -1		|  1
+                paper   |	 1		|  0		| -1
+                scissors|	-1		|  1		|  0
             */
             var winResultsTable = [
                 [0, -1, 1],
@@ -38,9 +38,9 @@ var games;
             }
             return result;
         };
-        GameService.prototype.addCleanGame = function () {
+        GameService.prototype.addNewGame = function () {
             var defer = this.$q.defer();
-            this.API.addGame(this.getCleanGame())
+            this.API.addGame(this.getNewGame())
                 .then(function (res) {
                 defer.resolve(res);
             }, function (error) {
@@ -49,8 +49,10 @@ var games;
             return defer.promise;
         };
         GameService.prototype.hasPlayerPlayedInGame = function (game) {
-            return angular.isDefined(game) && (game !== null)
-                && angular.isDefined(game.playerOption) && (game.playerOption !== null)
+            return angular.isDefined(game)
+                && (game !== null)
+                && angular.isDefined(game.playerOption)
+                && (game.playerOption !== null)
                 && (game.playerOption !== '');
         };
         GameService.prototype.playGameAsPlayer = function (game, option) {
@@ -72,7 +74,7 @@ var games;
         };
         GameService.prototype.getNewComputerOption = function () {
             var _this = this;
-            // get Options from the cosntants
+            // get options from the cosntants
             var optionsStats = {};
             this.GAME_OPTIONS_CONSTANTS.forEach(function (option) {
                 optionsStats[option.label] = {
@@ -111,12 +113,12 @@ var games;
             return counterOption;
         };
         /**
-         * Returs a clean game. No players has played in this game.
+         * Returs a new game. No player has played in this game.
          * @private
          * @returns {IGame}
          * @memberOf GameService
          */
-        GameService.prototype.getCleanGame = function () {
+        GameService.prototype.getNewGame = function () {
             var game = {
                 computerOption: '',
                 playerOption: '',
@@ -125,7 +127,7 @@ var games;
             return game;
         };
         /**
-         * Choose best option to counter passed option
+         * Choose best option to counter passed option.
          * @private
          * @param {string} option
          * @returns {string}
@@ -140,11 +142,11 @@ var games;
                 case 'scissors':
                     return 'rock';
                 default:
-                    return 'rock'; // Not optimal can be changed in a future
+                    return 'rock'; // Not optimal can be changed in future
             }
         };
         /**
-         * Select option for a player or computer in a game.
+         * Select an option for a player or computer in a game.
          * @private
          * @param {IGame} game
          * @param {string} value

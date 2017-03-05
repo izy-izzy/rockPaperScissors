@@ -12,7 +12,6 @@
 		'games'
 	]);
 
-	
 	var rpsAppInject: Array<string> = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 	rpsAppConfiguration.$inject = rpsAppInject;
 	

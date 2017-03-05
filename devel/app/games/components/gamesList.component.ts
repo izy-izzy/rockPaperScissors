@@ -9,7 +9,7 @@ namespace games {
 		public gamesList:IGame[];
 		public errorMessage:string;
 
-		static $inject: Array<string> = ['GameService','$filter'];
+		static $inject: Array<string> = ['GameService', '$filter'];
 
 		constructor(private GameService:IGameService, private $filter) {
 			this.init();
@@ -49,8 +49,8 @@ namespace games {
 		 * @memberOf gameListsController
 		 */
 		public addNewGame(){
-			this.GameService.addCleanGame()
-				.then(res => null, (error) => {
+			this.GameService.addNewGame()
+				.then(res => null, error => {
 					this.errorMessage = error;
 				});
 		}
@@ -68,14 +68,14 @@ namespace games {
 		 */
 		public playGameWith(game:IGame, option:string){
 			this.GameService.playGameAsPlayer(game,option)
-				.then(res => null, (error) => {
+				.then(res => null, error => {
 					this.errorMessage = error;
 				});
 
 			let computerOption = this.GameService.getNewComputerOption();
 
 			this.GameService.playGameAsComputer(game,computerOption)
-				.then(res => null, (error) => {
+				.then(res => null, error => {
 					this.errorMessage = error;
 				});
 		}

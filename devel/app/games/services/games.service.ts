@@ -7,14 +7,14 @@
  */
 declare interface IGameService {
 	/**
-	 * returns array of games that has been created
+	 * Returns an array of games that have been created.
 	 * @returns {IGame[]} 
 	 * @memberOf IGameService
 	 */
 	getGames():IGame[];
 	
 	/**
-	 * returns game score from player perspective. 
+	 * Returns a game score from player's perspective. 
 	 * -1 => lose, 0 => draw, 1 => win
 	 * @param {IGame} game 
 	 * @returns {number} 
@@ -23,11 +23,11 @@ declare interface IGameService {
 	gameScoreFromPlayerPerspective(game:IGame):number;
 
 	/**
-	 * Add clean game to the games array. In a clean game neither of players has played yet.
+	 * Adds a new game to the games array. In a new game neither of players has played yet.
 	 * @returns {angular.IPromise<any>} 
 	 * @memberOf IGameService
 	 */
-	addCleanGame(): angular.IPromise<any>;
+	addNewGame(): angular.IPromise<any>;
 	
 	/**
 	 * Indicates if the player has already played in this game.
@@ -38,7 +38,7 @@ declare interface IGameService {
 	hasPlayerPlayedInGame(game:IGame): boolean;
 	
 	/**
-	 * Save players option in the selected game. 
+	 * Saves playe'rs option in the selected game. 
 	 * @param {IGame} game 
 	 * @param {string} option 
 	 * @returns {angular.IPromise<any>} 
@@ -47,7 +47,7 @@ declare interface IGameService {
 	playGameAsPlayer(game:IGame, option:string): angular.IPromise<any>;
 	
 	/**
-	 * Save computers option in the selected game. 
+	 * Saves computer's option in the selected game. 
 	 * @param {IGame} game 
 	 * @param {string} option 
 	 * @returns {angular.IPromise<any>} 
@@ -56,7 +56,7 @@ declare interface IGameService {
 	playGameAsComputer(game:IGame, option:string): angular.IPromise<any>;
 
 	/**
-	 * Get option that is best looking for a computer according to already played games.
+	 * Gets an option that has the best chance for the computer according to already played games.
 	 * Only data from currently saved games are used to compute probabilities.
 	 * @returns {string} 
 	 * @memberOf IGameService
@@ -64,7 +64,7 @@ declare interface IGameService {
 	getNewComputerOption():string;
 	
 	/**
-	 * Deletes all the games
+	 * Deletes all the games.
 	 * @returns {angular.IPromise<any>} 
 	 * @memberOf IGameService
 	 */
@@ -77,7 +77,7 @@ namespace games {
 
 	class GameService implements IGameService {
 
-		static $inject: Array<string> = ['$q','API', '$filter', 'GAME_OPTIONS_CONSTANTS'];
+		static $inject: Array<string> = ['$q', 'API', '$filter', 'GAME_OPTIONS_CONSTANTS'];
 
 		constructor(private $q, private API:IAPI, private $filter, private GAME_OPTIONS_CONSTANTS) {}
 
@@ -91,9 +91,9 @@ namespace games {
 			/* 	
 						| 	rock 	| paper 	| scissors
 			-----------------------------------------------
-				rock	|	0		| -1		| 1
-				paper   |	1		| 0			| -1
-				scissors|	-1		| 1			| 0
+				rock	|	 0		| -1		|  1
+				paper   |	 1		|  0		| -1
+				scissors|	-1		|  1		|  0
 			*/
 			let winResultsTable = [
 				[0, -1 , 1],
@@ -114,45 +114,51 @@ namespace games {
 			return result;
 		}
 
-		public addCleanGame(): angular.IPromise<any>{
+		public addNewGame(): angular.IPromise<any>{
 			let defer = this.$q.defer();
-			this.API.addGame(this.getCleanGame())
-				.then((res) => {
+
+			this.API.addGame(this.getNewGame())
+				.then(res => {
 					defer.resolve(res);
-				}, (error) => {
+				}, error => {
 					defer.reject(error);
 				});
+
 			return defer.promise;
 		}
 
 		public hasPlayerPlayedInGame(game:IGame): boolean {
-			return angular.isDefined(game) && (game !== null)
-				&& angular.isDefined(game.playerOption) && (game.playerOption !== null)
+			return angular.isDefined(game) 
+				&& (game !== null)
+				&& angular.isDefined(game.playerOption) 
+				&& (game.playerOption !== null)
 				&& (game.playerOption !== '');
 		}
 
 		public playGameAsPlayer(game:IGame, option:string): angular.IPromise<any>{
-			return this.playGame(game,option,true);
+			return this.playGame(game, option, true);
 		}
 
 		public playGameAsComputer(game:IGame, option:string): angular.IPromise<any>{
-			return this.playGame(game,option,false);
+			return this.playGame(game, option, false);
 		}
 
 		public deleteAllGames(): angular.IPromise<any>{
 			let defer = this.$q.defer();
+
 			this.API.clearGames()
-				.then((res) => {
+				.then(res => {
 					defer.resolve(res);
-				}, (error) => {
+				}, error => {
 					defer.reject(error);
 				});
+
 			return defer.promise;;
 		}
 
 		public getNewComputerOption():string{
 
-			// get Options from the cosntants
+			// get options from the cosntants
 			let optionsStats = {};
 			this.GAME_OPTIONS_CONSTANTS.forEach((option:IGameOption) => {
 				optionsStats[option.label] = {
@@ -198,12 +204,12 @@ namespace games {
 		}
 
 		/**
-		 * Returs a clean game. No players has played in this game.
+		 * Returs a new game. No player has played in this game.
 		 * @private
 		 * @returns {IGame}
 		 * @memberOf GameService
 		 */
-		private getCleanGame(): IGame{
+		private getNewGame(): IGame{
 			var game:IGame = {
 				computerOption : '',
 				playerOption: '',
@@ -213,7 +219,7 @@ namespace games {
 		}
 
 		/**
-		 * Choose best option to counter passed option
+		 * Choose best option to counter passed option.
 		 * @private
 		 * @param {string} option 
 		 * @returns {string} 
@@ -228,12 +234,12 @@ namespace games {
 				case 'scissors':
 					return 'rock';
 				default:
-					return 'rock'; // Not optimal can be changed in a future
+					return 'rock'; // Not optimal can be changed in future
 			}
 		}
 
 		/**
-		 * Select option for a player or computer in a game.
+		 * Select an option for a player or computer in a game.
 		 * @private
 		 * @param {IGame} game 
 		 * @param {string} value 
